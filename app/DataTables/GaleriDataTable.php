@@ -29,8 +29,8 @@ class GaleriDataTable extends DataTable
             })
             ->rawColumns(['thumbnail', 'action'])
             ->editColumn('thumbnail', function ($row) {
-                $url = asset("storage/{$row->thumbnail}");
-                $imglink = url("storage/{$row->thumbnail}");
+                $url = asset("assets/{$row->thumbnail}");
+                $imglink = url("assets/{$row->thumbnail}");
                 $img = '<a href="' . $imglink . '"><img src=' . $url . ' height="50px" width="50px"></a>';
                 return $img;
             })

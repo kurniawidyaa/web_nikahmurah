@@ -62,7 +62,7 @@
             </div>
             <div class="col-md-6">
                 @if ($layanan->thumbnail)
-                    <img src="{{ asset('storage/' . $layanan->thumbnail) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                    <img src="{{ asset('assets/' . $layanan->thumbnail) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
                     @endif
             </div>
         </div>

@@ -10,7 +10,7 @@
 <body>
     <div class="box">
         <div class="title mb-5" style="text-align: center">
-            <img src="../public/storage/images/logo.jpg">
+            <img src="../public/assets/images/logo.jpg">
             <h1>Laporan Penjualan</h1>
              <h3>Periode {{ $bulan != "" ? $bulan: "" }} {{ $tahun }}</h3>
         </div>

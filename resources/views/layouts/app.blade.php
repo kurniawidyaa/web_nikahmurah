@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}"><img style="max-height:50px" src="{{ asset('storage/images/logo.jpg') }}" alt="" class="img-fluid"></a>
+                <a class="navbar-brand" href="{{ route('home') }}"><img style="max-height:50px" src="{{ asset('assets/images/logo.jpg') }}" alt="" class="img-fluid"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

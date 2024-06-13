@@ -5,7 +5,7 @@
           <div class="logo">
             {{-- <h1 class="text-light"><a href="index.html"><span>Moderna</span></a></h1> --}}
             <!-- Uncomment below if you prefer to use an image logo -->
-            <a href="{{ route('home') }}"><img src="{{ asset('storage/images/logo.jpg') }}" alt="" class="img-fluid"></a>
+            <a href="{{ route('home') }}"><img src="{{ asset('assets/images/logo.jpg') }}" alt="" class="img-fluid"></a>
           </div>
     
           <nav id="navbar" class="navbar">

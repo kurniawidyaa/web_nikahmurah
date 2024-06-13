@@ -43,7 +43,7 @@
             </div>
             <div class="col-md-6">
                 @if ($admin->photo)
-                    <img src="{{ asset('storage/images/admin/' . $admin->photo) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                    <img src="{{ asset('assets/images/admin/' . $admin->photo) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
                 @endif
             </div>
         </div>

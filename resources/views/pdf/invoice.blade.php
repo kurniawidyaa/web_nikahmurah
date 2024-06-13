@@ -16,8 +16,8 @@
                     <table>
                         <tr>
                             <td class="title" style="justify-content:left; display:flex; padding:0px">
-                                {{-- <img src="{{ asset('storage/images/logo.jpg') }}" > --}}
-                                <img src="../public/storage/images/logo.jpg" >
+                                {{-- <img src="{{ asset('assets/images/logo.jpg') }}" > --}}
+                                <img src="../public/assets/images/logo.jpg" >
                             </td>
                             <td>
                                 

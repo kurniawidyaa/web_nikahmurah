@@ -75,7 +75,7 @@ class UserController extends Controller
         $customer->email = $request->email;
         $customer->phone = $request->phone;
         $customer->address = $request->address;
-        $customer->photo = $request->photo;
+        $customer->photo = userpath($request->photo);
         $customer->save();
 
         return response()->json([

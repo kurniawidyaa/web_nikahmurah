@@ -45,21 +45,28 @@ function galeriPath(Request $request)
 {
     $extension = $request->file('thumbnail')->getClientOriginalName();
     $filename = 'NMT' . Carbon::now()->format('ymd') . '_' . $extension;
-    $file = request()->file('thumbnail') ? $request->file('thumbnail')->storeAs('images/galeri', $filename) :   null;
+    $file = request()->file('thumbnail') ? $request->file('thumbnail')->Storage::disk('images/galeri', $filename) :   null;
+    return $file;
+}
+function userpath(Request $request)
+{
+    $extension = $request->file('thumbnail')->getClientOriginalName();
+    $filename = 'NMT' . Carbon::now()->format('ymd') . '_' . $extension;
+    $file = request()->file('thumbnail') ? $request->file('thumbnail')->Storage::disk('images/user', $filename) :   null;
     return $file;
 }
 function layananPath(Request $request)
 {
     $extension = $request->file('thumbnail')->getClientOriginalName();
     $filename = 'NMT' . Carbon::now()->format('ymd') . '_' . 'layanan' . '.' . $extension;
-    $file = $request->file('thumbnail') ? $request->file('thumbnail')->storeAs('images/layanan', $filename) : null;
+    $file = $request->file('thumbnail') ? $request->file('thumbnail')->Storage::disk('images/layanan', $filename) : null;
     return $file;
 }
 function postPath(Request $request)
 {
-    $extension = $request->file('thumbnail')->getClientOriginalExtension();
+    $extension = $request->file('thumbnail')->getClientOriginalName();
     $filename = 'NMT' . Carbon::now()->format('ymd') . '_' . 'post' . '.' . $extension;
-    $file = $request->file('thumbnail') ? $request->file('thumbnail')->storeAs('images/post', $filename) : null;
+    $file = $request->file('thumbnail') ? $request->file('thumbnail')->Storage::disk('images/post', $filename) : null;
     return $file;
 }
 

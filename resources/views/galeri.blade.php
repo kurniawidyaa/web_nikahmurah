@@ -33,11 +33,11 @@
         @foreach ($galeri as $item)
         <div class="col-lg-3 col-md-6 portfolio-wrap">
           <div class="portfolio-item">
-            <img src="{{ asset('storage/'. $item->thumbnail) }}" class="imgPort img-fluid" alt="">
+            <img src="{{ asset('assets/'. $item->thumbnail) }}" class="imgPort img-fluid" alt="">
             <div class="portfolio-info">
               <h3>{{ $item->kategori->name }}</h3>
               <div>
-                <a href="{{ asset('public/storage/'. $item->thumbnail) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title=""><i class="bx bx-plus"></i></a>
+                <a href="{{ asset('assets/'. $item->thumbnail) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title=""><i class="bx bx-plus"></i></a>
                 <a href="layanan?kategori={{$item->kategori->identifier}}"><i class="bx bx-link"></i></a>
               </div>
             </div>

@@ -117,7 +117,7 @@
              <div class="swiper-slide">
                <div class="box">
                  @if ($layanan->thumbnail)
-                     <img src="{{ asset('/storage/' . $layanan->thumbnail) }}">
+                     <img src="{{ asset('assets/' . $layanan->thumbnail) }}">
                      {{-- alt="{{ $serv->ServiceCategory->name }}/img/galeri/mua.jpg" --}}
                  @else
                      <img src="https://source.unsplash.com/500x300?{{ $layanan->name }}" alt="{{ $layanan->name }}">
@@ -146,7 +146,7 @@
       <div class="swiper-wrapper">
         @foreach ($testimoni as $testi)
         <div class="testimonial-item swiper-slide justify-content-center" style="display: flex">
-          <img src="{{ asset('/storage/images/testimoni/'.$testi->thumbnail) }}" class="testimoni-img" alt="">
+          <img src="{{ asset('assets/images/testimoni/'.$testi->thumbnail) }}" class="testimoni-img" alt="">
           {{-- <h3>Saul Goodman</h3>
           <h4>Ceo &amp; Founder</h4> --}}
           {{-- <p>

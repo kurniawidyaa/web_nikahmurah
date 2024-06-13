@@ -25,7 +25,7 @@
                 <div class="align-items-center">   
                   <div class="">
                     @if ($layanan->thumbnail != null)
-                    <img src="{{ asset('storage/' . $layanan->thumbnail) }}"> 
+                    <img src="{{ asset('assets/' . $layanan->thumbnail) }}"> 
                     @else
                     <img src="https://source.unsplash.com/500x300?{{ $layanan->name }}" class="card-img-top">
                     @endif

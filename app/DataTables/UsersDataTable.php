@@ -23,6 +23,13 @@ class UsersDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addIndexColumn()
+            ->rawColumns(['photo', 'action'])
+            ->editColumn('photo', function ($row) {
+                $url = asset("assets/{$row->photo}");
+                $imglink = url("assets/{$row->photo}");
+                $img = '<a href="' . $imglink . '"><img src=' . $url . ' height="50px" width="50px"></a>';
+                return $img;
+            })
             ->addColumn('action', function ($row) {
                 $action = '';
                 if (Gate::allows('update users')) {

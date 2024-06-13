@@ -39,7 +39,7 @@
               <div class="card-img">
                 @if ($serv->thumbnail != null)
                 {{-- {{ $serv->kategori->name }} --}}
-                <img src="{{ asset('storage/'.$serv->thumbnail) }}" class="imgServices img-fluid"> 
+                <img src="{{ asset('assets/'.$serv->thumbnail) }}" class="imgServices img-fluid"> 
                 @else
                 <img src="https://source.unsplash.com/500x300?{{ $serv->name }}" class="card-img-top" alt="{{ $serv->name }}">
                 @endif
