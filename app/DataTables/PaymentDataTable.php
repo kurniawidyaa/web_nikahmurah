@@ -27,12 +27,15 @@ class PaymentDataTable extends DataTable
             ->addColumn('action', function ($row) {
                 $order = route('order.show', $row->payment_id);
                 $action = '';
-                if ($row->status == 'capture') {
-                    $action = '<a href=" ' . $row->link . '" class="btn btn-primary text-white text-center btn-show" style="display:none">Pay</a>';
+                if ($row->status == 'lunas') {
+                    $action = '<a href=" ' . $row->link . '" style="display:none" class="btn btn-primary text-white text-center btn-show">Pay</a>';
                 }
                 $action = '<div class="column"><a href=" ' . $row->link . '" class="btn btn-primary text-white text-center btn-show mb-3">Pay</a>';
 
-                $action .= '<a href="' . $order . '" class="btn btn-primary text-white text-center btn-show">Quotation</a></div>';
+                if ($row->status == 'lunas') {
+                    $action .= '<a href="' . $order . '" class="btn btn-primary text-white text-center btn-show">Quotation</a></div>';
+                }
+                $action .= '<a href="' . $order . '" class="btn btn-primary text-white text-center btn-show" style="display:none">Quotation</a></div>';
 
                 return $action;
             });

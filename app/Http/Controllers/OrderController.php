@@ -138,7 +138,8 @@ class OrderController extends Controller
      */
     public function show($payment_id)
     {
-        $payment = Payment::where('payment_id', $payment_id)->where('status', 'lunas')->first();
+        // dd('test');
+        $payment = Payment::where('payment_id', $payment_id)->where('status', 'lunas')->firstOrFail();
         if ($payment) {
             return view('shop.show', [
                 'payment' => $payment,
@@ -149,9 +150,7 @@ class OrderController extends Controller
 
     public function generate_pdf($payment_id)
     {
-        $payment = Payment::where('payment_id', $payment_id)->where('status', 'lunas')->first();
-        $data = ['payment' => $payment];
-        // dd($data);
+        $payment = Payment::where('payment_id', $payment_id)->where('status', 'lunas')->firstOrFail();
         $pdf = Pdf::loadView('pdf.invoice', ['payment' => $payment])->setPaper('a4');
         return $pdf->stream('invoice.pdf');
         // return $pdf->download('invoice.pdf');
@@ -197,23 +196,47 @@ class OrderController extends Controller
 
     public function PdfOrder(Request $request)
     {
-        dd('test');
-        // $bulan = $request->bulan;
-        // $tahun = $request->tahun;
-        // $bulan_transaksi = date('Y-m', strtotime($tahun . '-' . $bulan));
-        // $transactionitem = Order::whereHas('carts', function ($q) use ($bulan_transaksi) {
-        //     $q->where('status', 'ordered');
+        $bulan = cetakbulan($request->bulan);
+        $tahun = $request->tahun;
+
+        $bln_transaksi = date('Y-m', strtotime($tahun . '-' . $bulan));
+        // dd($bln_transaksi);
+
+        $order = Order::with(['cart' => function ($q) use ($bln_transaksi) {
+            $q->where('created_at', 'like', '%' . $bln_transaksi . '%');
+            $q->where('status', 'ordered');
+        }])->get();
+
+        // $order = Order::whereHas('cart', function ($q) use ($request) {
+        //     $q->where('created_at', '>=', $request->start_date);
+        //     $q->where('created_at', '<=', $request->end_date);
+        // })->get();
+
+        // $order = Order::where('created_at', '>=', $request->start_date)->where('created_at', '<=', $request->end_date)->get();
+
+        // dd($order);
+        // return view('pdf.dataOrder', compact(['order', 'bulan', 'tahun']));
+        $pdf = Pdf::loadView('pdf.dataOrder', [
+            'order' => $order,
+            'bulan' => $bulan,
+            'tahun' => $tahun,
+        ])->setPaper('a4');
+        return $pdf->stream('Laporan.pdf');
+    }
+
+    public function cek(Request $request, DashboardOrderDataTable $datatables)
+    {
+        $bulan = cetakbulan($request->bulan);
+        $tahun = $request->tahun;
+        $bulan_transaksi = date('Y-m', strtotime($tahun . '-' . $bulan));
+
+        // $order = Order::whereHas('cart', function ($q) use ($bulan_transaksi) {
         //     $q->where('created_at', 'like', $bulan_transaksi . '%');
         // })->get();
-        // dd($bulan, $tahun);
 
-        // $data = [
-        //     'transactionitem' => $transactionitem,
-        //     'bulan' => $this->cetakbulan($bulan),
-        //     'tahun' => $tahun
-        // ];
+        // dd($order);
 
-        // $pdf = Pdf::loadView('pdf.dataOrder', $data)->setOption(['dpi' => 150, 'defaultFont' => 'san-serif'])->setPaper('a4');
-        // return $pdf->stream('Laporan.pdf');
+        // return view('pdf.dataOrder', compact(['order', 'bulan', 'tahun']));
+        return $datatables->render('pdf.test');
     }
 }

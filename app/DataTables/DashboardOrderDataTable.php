@@ -31,15 +31,15 @@ class DashboardOrderDataTable extends DataTable
             ->addColumn('action', function ($row) {
                 $payment = route('dashboard.payment', $row->transaction_id);
                 $action = '';
-                // if (Gate::allows('read payment')) {
-                $action =   '<form action="' . $payment . '" method="GET">
+                if (Gate::allows('read payment')) {
+                    $action =   '<form action="' . $payment . '" method="GET">
                         ' . method_field('GET') . '
                         ' . csrf_field() . '
                         <button data-id=' . $row->transaction_id . ' data-jenis="show" type="submit" class="btn mb-2 btn-primary btn-sm action">Payment</button>
                         </form>';
-                // }
+                }
                 if (Gate::allows('update transaction/orders')) {
-                    $action = '<button data-id=' . $row->id . ' data-jenis="edit" type="button" class="btn mb-2 btn-primary btn-sm action"><i class="ti-pencil"></i></button>';
+                    $action .= '<button data-id=' . $row->id . ' data-jenis="edit" type="button" class="btn mb-2 btn-primary btn-sm action"><i class="ti-pencil"></i></button>';
                 }
                 if (Gate::allows('delete transaction/orders')) {
                     $action .= ' <button data-id=' . $row->id . ' data-jenis="delete" type="button" class="btn mb-2 btn-danger btn-sm action"><i class="ti-trash"></i></button>';

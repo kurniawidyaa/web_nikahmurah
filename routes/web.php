@@ -1,6 +1,5 @@
 <?php
 
-use App\DataTables\OrderDataTable;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\CartController;
@@ -12,12 +11,12 @@ use App\Http\Controllers\KategoriLayananController;
 use App\Http\Controllers\KategoriPostController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +32,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('test', function () {
-    return view('test');
+    $pdf = Pdf::loadview('pdf.test')->setPaper('a4');
+    return $pdf->stream();
 });
 
 // Route::get('/dashboard', function () {
@@ -64,8 +64,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('cart', CartController::class);
 
     Route::get('order/display', [OrderController::class, 'display'])->name('order.display');
-    Route::resource('order', OrderController::class);
     Route::get('order/laporan', [OrderController::class, 'PdfOrder'])->name('order.pdf');
+    Route::resource('order', OrderController::class);
+
+    // Route::get('cek', [OrderController::class, 'cek'])->name('cek');
 
     Route::post('payment', [PaymentController::class, 'store'])->name('payment.store');
     Route::post('installment', [PaymentController::class, 'installment'])->name('payment.installment');

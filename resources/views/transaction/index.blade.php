@@ -14,12 +14,21 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="mb-3">Table Order</h4>
-                        <div class="" style="display: flex">
-                            <div class="col-md-2" style="margin-right: 20px">
-                                <form action="{{ route('order.pdf') }}" method="get">
-                                    @csrf
-                                <select class="form-select form-select-sm mb-3" aria-label="Default select example">
-                                    <option >Pilih Bulan</option>
+                        <form action="{{ route('order.pdf') }}" method="get">
+                            @csrf
+                        <div class="col-md-12" style="display:flex">
+                                {{-- <div class="col-md-8"style="margin-right: 20px">
+                                    <label for="start_date" class="form-label"></label>
+                                    <div class="input-group mb-3 input-daterange datepicker date" data-date-format="dd-mm-yyyy">
+                                        <input class="form-control" required="" type="text" id="start_date" name="start_date" value="" readonly="">
+                                        <span class="bg-primary text-light px-3 justify-content-center align-items-center d-flex">to</span>
+                                        <input class="form-control" required="" type="text" id="end_date" name="end_date" value="" readonly="">
+                                    </div>
+                                </div> --}}
+
+                              <div class="col-md-2" style="margin-right: 20px">
+                                <select class="form-select form-select-sm mb-3" name="bulan"  aria-label="Default select example">
+                                    <option selected>Pilih Bulan</option>
                                     <option value="1">Januari</option>
                                     <option value="2">Februari</option>
                                     <option value="3">Maret</option>
@@ -35,13 +44,13 @@
                                 </select>
                             </div>
                             <div class="col-md-2" style="margin-right: 20px">
-                                <select class="form-select form-select-sm" aria-label="Default select example">
-                                    <option >Pilih Tahun</option>
+                                <select class="form-select form-select-sm" name="tahun" aria-label="Default select example">
+                                    <option selected>Pilih Tahun</option>
                                     @for($a = 2024; $a <= 2035; $a++)
-                                    <option selected value="{{$a}}">{{$a}}</option>
+                                    <option value="{{$a}}">{{$a}}</option>
                                   @endfor
                                 </select>
-                            </div>
+                            </div>  
                             <button type="submit" class="btn mb-2 btn-outline-primary btn-sm">Download</button>
                         </form>
                         </div>
@@ -172,5 +181,12 @@
         })
         
     })
+    $('.date').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: 'dd-mm-yyyy'
+    }).on('changeDate', function (e) {
+        console.log(e.target.value);
+    });
 </script>
 @endpush
