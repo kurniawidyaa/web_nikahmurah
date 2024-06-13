@@ -28,7 +28,7 @@
 
             <div class="entry-img">
               @if ($post->thumbnail != null)
-                  <img src="{{ asset('assets/' . $post->thumbnail) }}" alt="" class="img-fluid">
+                  <img src="{{ asset('/assets/' . $post->thumbnail) }}" alt="" class="img-fluid">
               @else
                   <img src="https://source.unsplash.com/1000x500?" alt="" class="img-fluid">
               @endif
