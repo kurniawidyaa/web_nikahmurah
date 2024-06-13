@@ -480,9 +480,9 @@
     right: 17vw;
 }
 
-#cover-video {
+url #cover-video {
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        url("assets/images/about.jpeg");
+        url("../assets/images/about.jpeg");
     width: 33.5vw;
     height: 37vh;
     border-radius: 20px;
