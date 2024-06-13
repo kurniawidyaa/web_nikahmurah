@@ -117,7 +117,7 @@
              <div class="swiper-slide">
                <div class="box">
                  @if ($layanan->thumbnail)
-                     <img src="{{ asset('assets/' . $layanan->thumbnail) }}">
+                     <img src="{{ asset('assets/'.$layanan->thumbnail) }}">
                      {{-- alt="{{ $serv->ServiceCategory->name }}/img/galeri/mua.jpg" --}}
                  @else
                      <img src="https://source.unsplash.com/500x300?{{ $layanan->name }}" alt="{{ $layanan->name }}">
