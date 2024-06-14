@@ -451,7 +451,7 @@
 }
 
 .video {
-    /* background-image: url('../img/video-cover.svg'); */
+
     flex-basis: 75%;
     flex-wrap: wrap;
     /* padding-top: 2vh; */
